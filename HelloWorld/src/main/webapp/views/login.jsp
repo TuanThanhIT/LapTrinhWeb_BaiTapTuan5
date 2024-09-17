@@ -65,9 +65,13 @@ img.avatar {
 /* The "Forgot password" text */
 span.psw {
 	float: right;
-	padding-top: 16px;
+	padding-top: 2px;
 }
 
+span.psp{
+	float: left;
+	padding-top: 2px;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
 	span.psw {
@@ -77,6 +81,7 @@ span.psw {
 	.cancelbtn {
 		width: 100%;
 	}
+	
 }
 </style>
 </head>
@@ -97,13 +102,16 @@ span.psw {
 
 			<button type="submit">Login</button>
 
-			<label> <input type="checkbox" name="remember"> Remember me
+			<label> <input type="checkbox" name="remember">
+				Remember me
 			</label>
 		</div>
 
 		<div class="container" style="background-color: #f1f1f1">
-			<span class="psw">Forgot <a href="#">password?</a></span>
+			<span class="psw">Forgot <a href="#">password ?</a></span>
+			<span class="psp">If you do not have an account on the system, please <a href="#">register.</a></span>
 		</div>
+		
 	</form>
 </body>
 </html>

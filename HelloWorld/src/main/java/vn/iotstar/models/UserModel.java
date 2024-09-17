@@ -16,6 +16,34 @@ public class UserModel implements Serializable {
 	private int roleid;
 	private String phone;
 	private Date createdate;
+	
+	
+
+	public UserModel(String username, String email, String password, String fullname, String images, int roleid,
+			String phone, Date createdate) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.fullname = fullname;
+		this.images = images;
+		this.roleid = roleid;
+		this.phone = phone;
+		this.createdate = createdate;
+	}
+	
+	
+
+	public UserModel(String username, String email, String password, String fullname, String phone) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.fullname = fullname;
+		this.phone = phone;
+	}
+
+
 
 	// Tao Constructor
 	public UserModel() {
@@ -96,12 +124,14 @@ public class UserModel implements Serializable {
 	}
 
 	// override
-
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
 				+ ", fullname=" + fullname + ", images=" + images + ", roleid=" + roleid + ", phone=" + phone
 				+ ", createdate=" + createdate + "]";
 	}
+
+
+
 
 }

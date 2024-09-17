@@ -8,7 +8,10 @@ import vn.iotstar.configs.DBConnectSQLServer;
 import vn.iotstar.dao.IUserDao;
 import vn.iotstar.models.UserModel;
 
-public class UserDaoImpl implements IUserDao{
+public class UserDaoImpl implements IUserDao {
+	public Connection conn = null;
+	public PreparedStatement ps = null;
+	public ResultSet rs = null;
 
 	@Override
 	public UserModel findByUserName(String username) {
@@ -18,7 +21,7 @@ public class UserDaoImpl implements IUserDao{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, username); // truyen tham so
 			ResultSet rs = ps.executeQuery(); // thuc thi phat bieu prepare roi dua ket qua vao resultset
-			while(rs.next()) {
+			while (rs.next()) {
 				UserModel user = new UserModel();
 				user.setId(rs.getInt("id"));
 				user.setUsername(rs.getString("username"));
@@ -29,15 +32,71 @@ public class UserDaoImpl implements IUserDao{
 				user.setPhone(rs.getString("phone"));
 				user.setRoleid(rs.getInt("roleid"));
 				user.setCreatedate(rs.getDate("createdate"));
-				
+
 				return user;
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	
+
+	public void insert(UserModel user) {
+		String sql = "INSERT INTO [users](email, username, fullname, password, images, roleid,phone, createdate) VALUES (?,?,?,?,?,?,?,?)";
+		try {
+			conn = new DBConnectSQLServer().getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getEmail());
+			ps.setString(2, user.getUsername());
+			ps.setString(3, user.getFullname());
+			ps.setString(4, user.getPassword());
+			ps.setString(5, user.getImages());
+			ps.setInt(6, user.getRoleid());
+			ps.setString(7, user.getPhone());
+			ps.setDate(8, user.getCreatedate());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean checkExistEmail(String email) {
+		boolean duplicate = false;
+		String query = "select * from [users] where email = ?";
+		try {
+			conn = new DBConnectSQLServer().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+		}
+		return duplicate;
+	}
+
+	public boolean checkExistUsername(String username) {
+		boolean duplicate = false;
+		String query = "select * from [users] where username = ?";
+		try {
+			conn = new DBConnectSQLServer().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+		}
+		return duplicate;
+	}
+
+
+
 }
