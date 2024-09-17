@@ -1,0 +1,7 @@
+package admin;
+
+public class Snippet {
+	RequestDispatcher rd = req.getRequestDispatcher("/views/login.jsp");
+			rd.forward(req, resp);
+}
+

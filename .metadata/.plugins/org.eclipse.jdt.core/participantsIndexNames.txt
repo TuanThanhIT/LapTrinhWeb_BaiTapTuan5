@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+D:\HOCTAP\Lap_trinh_Web\work_space_1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2675515875.index
+\HelloWorld\src\main\java
+D:\HOCTAP\Lap_trinh_Web\work_space_1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\145484807.index
+\HelloWorld\src\main\java

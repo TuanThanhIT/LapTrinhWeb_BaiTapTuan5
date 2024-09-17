@@ -1,0 +1,8 @@
+package vn.iotstar.controllers;
+
+import jakarta.servlet.http.HttpServlet;
+
+public class WaitingController extends HttpServlet{
+	
+
+}

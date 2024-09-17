@@ -1,0 +1,14 @@
+package vn.iotstar.services.impl;
+
+import vn.iotstar.dao.IUserDao;
+import vn.iotstar.models.UserModel;
+
+public class IUserDaoImpl implements IUserDao {
+
+	@Override
+	public UserModel findByUserName(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
