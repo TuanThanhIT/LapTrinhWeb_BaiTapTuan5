@@ -16,7 +16,7 @@ import vn.iotstar.services.impl.UserServiceImpl;
 import vn.iotstar.utils.Constant;
 
 
-@SuppressWarnings( "serial")
+@SuppressWarnings("unused")
 @WebServlet(urlPatterns = { "/login", "/dang-nhap" })
 public class LoginController extends HttpServlet {
 
@@ -46,7 +46,6 @@ public class LoginController extends HttpServlet {
 
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");

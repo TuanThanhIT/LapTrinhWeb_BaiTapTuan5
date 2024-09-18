@@ -89,9 +89,9 @@ span.psp{
 	<c:if test="${alert !=null}">
 		<h3 class="alert alertdanger">${alert}</h3>
 	</c:if>
-	<form action="/HelloWorld/login" method="post">
+	<form action="login" method="post">
 		<div class="imgcontainer">
-			<img src="img_avatar2.png" alt="Avatar" class="avatar">
+			<img src="https://media.istockphoto.com/id/133876248/vi/anh/%C4%91%E1%BA%A3o-%C4%91%E1%BB%8Ba-trung-h%E1%BA%A3i.jpg?s=612x612&w=0&k=20&c=Cr4V4pr3od0iDrrVbU3pODATaavccwO6d7JcybLHV-0=" alt="Avatar" class="avatar">
 		</div>
 
 		<div class="container">
@@ -108,8 +108,8 @@ span.psp{
 		</div>
 
 		<div class="container" style="background-color: #f1f1f1">
-			<span class="psw">Forgot <a href="#">password ?</a></span>
-			<span class="psp">If you do not have an account on the system, please <a href="#">register.</a></span>
+			<span class="psw">Forgot <a href="http://localhost:8080/HelloWorld/forgotpass">password ?</a></span>
+			<span class="psp">If you do not have an account on the system, please <a href="http://localhost:8080/HelloWorld/register">register.</a></span>
 		</div>
 		
 	</form>
