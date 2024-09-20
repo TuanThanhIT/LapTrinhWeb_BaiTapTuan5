@@ -1,0 +1,70 @@
+package vn.iotstar.controllers;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import vn.iotstar.utils.Constant;
+
+@SuppressWarnings("serial")
+@WebServlet(urlPatterns = "/logout")
+public class LogoutController extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	/*
+		HttpSession session = req.getSession();
+
+		session.removeAttribute("account"); //remove session
+
+		Cookie[] cookies = req.getCookies();
+
+	
+		if(cookies!=null) {
+			for (Cookie cookie: cookies) {
+				if(Constant.COOKIE_REMEMBER.equals(cookie.getName()))
+				{ 	
+					cookie.setMaxAge(0); // <=> remove cookie 
+					resp.addCookie(cookie); // add again 
+					break;
+				}
+			}
+
+		}
+
+
+
+
+		resp.sendRedirect("./login");
+	}
+	*/
+		 HttpSession session = req.getSession();
+
+		    // Xóa thông tin tài khoản khỏi phiên làm việc
+		    session.removeAttribute("account"); 
+
+		    // Kiểm tra xem người dùng có muốn đăng xuất và không nhớ thông tin đăng nhập không
+		    String rememberMe = req.getParameter("remember"); // Lấy tham số từ yêu cầu
+
+		    Cookie[] cookies = req.getCookies();
+
+		    if (cookies != null) {
+		        for (Cookie cookie : cookies) {
+		            if (Constant.COOKIE_REMEMBER.equals(cookie.getName())) {
+		                // Chỉ xóa cookie nếu không chọn "Remember Me"
+		                if (rememberMe == null) {
+		                    cookie.setMaxAge(0); // Xóa cookie
+		                    resp.addCookie(cookie); // Thêm lại cookie để xóa
+		                }
+		                break; // Thoát khỏi vòng lặp sau khi tìm thấy cookie
+		            }
+		        }
+		    }
+
+		    // Chuyển hướng đến trang đăng nhập
+		    resp.sendRedirect("./login");
+}
